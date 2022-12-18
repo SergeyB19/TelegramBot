@@ -14,13 +14,9 @@ public class TelegramBotApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TelegramBotApplication.class, args);
-        LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
-
 
     }
-    @Scheduled(fixedDelay = 1_000L)
-    public void run() {
-    }
+
 
 
 }

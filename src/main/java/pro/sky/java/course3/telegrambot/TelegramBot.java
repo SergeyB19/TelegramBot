@@ -4,27 +4,24 @@ import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.DeleteMyCommands;
 import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.response.SendResponse;
+import org.springframework.context.annotation.Bean;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+@Bean
 public class TelegramBot {
-    private String messageText;
-    private Object chatId;
-    public TelegramBot(String token) {
-    }
 
     public void execute(DeleteMyCommands deleteMyCommands) {
+        TelegramBot bot = new TelegramBot("BOT_TOKEN");
     }
 
-    TelegramBot bot = new TelegramBot("BOT_TOKEN");
+
 
     bot.setUpdatesListener(updates -> {
         // Обрабатываем входящие сообщения
         // возвращаем id последнего обработанного сообщения или отмечаем все как обработанные
         return UpdatesListener.CONFIRMED_UPDATES_ALL;
     });
-
 
     SendMessage message = new SendMessage(chatId, messageText);
 
