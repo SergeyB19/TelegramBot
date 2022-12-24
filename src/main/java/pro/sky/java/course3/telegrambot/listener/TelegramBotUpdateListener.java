@@ -29,6 +29,7 @@ public class TelegramBotUpdateListener implements UpdatesListener {
 
     private final TelegramBot telegramBot;
 
+
     private final NotificationTaskRepository notificationTaskRepository;
     public TelegramBotUpdateListener(TelegramBot telegramBot, NotificationTaskRepository notificationTaskRepository) {
         this.telegramBot = telegramBot;
@@ -48,7 +49,7 @@ public class TelegramBotUpdateListener implements UpdatesListener {
             String message = update.message().text();
 
             if ("/start".equals(message)) {
-                SendMessage sendMessage = new SendMessage((chatId,
+                SendMessage sendMessage = new SendMessage((chatId),
                         "Привет! Этот бот позволяет планировать уведомления. Чтобы запланировать уведомления отправьте сообщение в формате 23.12.2022 15:00 Сделать домашку"))
                 telegramBot.execute(sendMessage);
             } else {
@@ -60,14 +61,12 @@ public class TelegramBotUpdateListener implements UpdatesListener {
                     NotificationTask notificationTask = new NotificationTask();
                     notificationTaskRepository.save(notificationTask);
                 } else {
-                    SendMessage sendMessage = new SendMessage((chatId,
-                            "Неверный формат! Чтобы запланировать уведомления отправьте сообщение в формате 23.12.2022 15:00 Сделать домашку"))
+                    SendMessage sendMessage = new SendMessage((chatId),
+                            "Неверный формат! Чтобы запланировать уведомления отправьте сообщение в формате 23.12.2022 15:00 Сделать домашку");
                     telegramBot.execute(sendMessage);
                 }
             }
         });
         return UpdatesListener.CONFIRMED_UPDATES_ALL;
     }
-
-}
 }

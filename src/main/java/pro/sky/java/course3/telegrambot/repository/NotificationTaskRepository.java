@@ -9,4 +9,7 @@ import java.time.LocalDateTime;
 @Repository
 public interface NotificationTaskRepository extends JpaRepository<NotificationTask, Long> {
     Iterable findAllByDateTime(LocalDateTime currentDateTime);
+
+    @Override
+    NotificationTask getById(Long id);
 }
